@@ -6,13 +6,13 @@
 /*   By: vparekh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 20:05:35 by vparekh           #+#    #+#             */
-/*   Updated: 2019/10/10 16:14:19 by vparekh          ###   ########.fr       */
+/*   Updated: 2020/09/24 19:39:25 by vparekh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int		ft_putendl_fd(char *s, int fd)
 {
 	int		i;
 	char	c;
@@ -20,9 +20,9 @@ void	ft_putendl_fd(char *s, int fd)
 	i = 0;
 	c = '\n';
 	if (s == NULL)
-		return ;
+		return (0);
 	while (s[i] != '\0')
 		write(fd, &s[i++], 1);
 	write(fd, &c, 1);
-	return ;
+	return (i);
 }

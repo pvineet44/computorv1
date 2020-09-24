@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   computor.c                                         :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vparekh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/24 18:41:04 by vparekh           #+#    #+#             */
-/*   Updated: 2020/09/24 19:08:35 by vparekh          ###   ########.fr       */
+/*   Created: 2020/09/24 19:12:27 by vparekh           #+#    #+#             */
+/*   Updated: 2020/09/24 19:12:35 by vparekh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "computor.h"
+#include "libft.h"
 
-int main(int argc, const char *argv[])
+int		ft_isspace(int c)
 {
-	if (argc != 2)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
+	c = (unsigned char)c;
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
+		|| c == ' ')
 		return (1);
-	}
-	int x = parse(argv[1]);
-	x++;
-	return 0;
+	return (0);
 }
