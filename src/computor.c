@@ -6,13 +6,13 @@
 /*   By: vparekh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 18:41:04 by vparekh           #+#    #+#             */
-/*   Updated: 2020/09/25 00:19:23 by vparekh          ###   ########.fr       */
+/*   Updated: 2020/09/25 01:29:06 by vparekh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "computor.h"
 
-double	*init_coefficients(double coefficients[], int size)
+static double	*init_coefficients(double coefficients[], int size)
 {
 	int i;
 
@@ -25,11 +25,61 @@ double	*init_coefficients(double coefficients[], int size)
 	return (coefficients);
 }
 
-int		main(int argc, const char *argv[])
+static	void	print_solution(double *solution, int degree)
+{
+	if (degree == 1)
+		printf("\nThe solution is %g\n", solution[1]);
+	else
+	{
+		if (solution[0] == 1)
+			printf("\nDiscriminant is zero, the solution is %g\n", \
+					solution[1]);
+		else if (solution[0] == 2)
+		{
+			printf("\nDiscriminant is strictly positive, the two solutions are\
+\n%g\n%g\n", solution[1], solution[2]);
+		}
+		else
+			printf("\nThe roots are complex numbers: %g + %gi && \%g - %gi\n"\
+					, solution[1], solution[2], solution[1], solution[2]);
+	}
+}
+
+static	void	print_result(double *coefficients, double *solution, int degree)
+{
+	int		i;
+
+	i = 1;
+	printf("Reduced form: ");
+	if (coefficients[0] < 0 && (coefficients[0] *= -1))
+		printf("- ");
+	printf("%g * X^%d ",coefficients[0], 0);
+	while (i <= degree)
+	{
+		if (coefficients[i] < 0 && (coefficients[i] *= -1))
+			printf("- ");
+		else
+			printf("+ ");
+		printf("%g * X^%d ",coefficients[i], i);
+		i++;
+	}
+	printf("\nPolynomial degree:  %d", degree);
+	if (degree > 2)
+	{
+		printf("The polynomial degree is strictly greater than 2,");
+		printf("I can't solve.");
+	}
+	else
+		print_solution(solution, degree);
+}
+
+int				main(int argc, const char *argv[])
 {
 	double	*coefficients;
 	int		degree;
+	double	*solution;
 
+	solution = NULL;
 	coefficients = NULL;
 	degree = 0;
 	coefficients = init_coefficients(coefficients, EXPONENT_LIMIT);
@@ -39,10 +89,7 @@ int		main(int argc, const char *argv[])
 		return (1);
 	}
 	parse(argv[1], coefficients, &degree);
-	printf("0: %f\n", coefficients[0]);
-	printf("1: %f\n", coefficients[1]);
-	printf("2: %f\n", coefficients[2]);
-	printf("3: %f\n", coefficients[3]);
-	printf("degree: %d\n", degree);
+	solution = solve(coefficients, degree);
+	print_result(coefficients, solution, degree);
 	return (0);
 }
