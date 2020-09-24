@@ -6,12 +6,11 @@
 /*   By: vparekh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 18:41:04 by vparekh           #+#    #+#             */
-/*   Updated: 2020/09/24 23:34:55 by vparekh          ###   ########.fr       */
+/*   Updated: 2020/09/25 00:19:23 by vparekh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "computor.h"
-
+#include "computor.h"
 
 double	*init_coefficients(double coefficients[], int size)
 {
@@ -23,7 +22,7 @@ double	*init_coefficients(double coefficients[], int size)
 		exit(1 * ft_putendl_fd("Error: Malloc failed.", 2));
 	while (i < size)
 		coefficients[i++] = 0;
-	return coefficients;
+	return (coefficients);
 }
 
 int		main(int argc, const char *argv[])
@@ -45,5 +44,5 @@ int		main(int argc, const char *argv[])
 	printf("2: %f\n", coefficients[2]);
 	printf("3: %f\n", coefficients[3]);
 	printf("degree: %d\n", degree);
-	return 0;
+	return (0);
 }
