@@ -6,7 +6,7 @@
 /*   By: vparekh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 18:41:04 by vparekh           #+#    #+#             */
-/*   Updated: 2020/09/25 02:01:46 by vparekh          ###   ########.fr       */
+/*   Updated: 2020/09/25 02:07:24 by vparekh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,12 @@ static	void	print_result(double *coefficients, double *solution, int degree)
 		printf("%g * X^%d ", coefficients[i], i);
 		i++;
 	}
-	printf("\nPolynomial degree:  %d", degree);
+	printf("= 0\n");
+	printf("Polynomial degree:  %d", degree);
 	if (degree > 2)
 	{
-		printf("The polynomial degree is strictly greater than 2,");
-		printf("I can't solve.");
+		printf("\nThe polynomial degree is strictly greater than 2, ");
+		printf("I can't solve.\n");
 	}
 	else
 		print_solution(solution, degree);
