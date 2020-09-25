@@ -6,7 +6,7 @@
 /*   By: vparekh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 18:41:04 by vparekh           #+#    #+#             */
-/*   Updated: 2020/09/25 01:29:06 by vparekh          ###   ########.fr       */
+/*   Updated: 2020/09/25 02:01:46 by vparekh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,25 @@ static double	*init_coefficients(double coefficients[], int size)
 	return (coefficients);
 }
 
+static	void	print_complex(double *solution)
+{
+	double tmp;
+
+	tmp = solution[2];
+	printf("\nDiscriminant is strictly negative, the complex roots are:\
+\n%g ", solution[1]);
+	if (solution[2] < 0 && (solution[2] *= -1))
+		printf("- ");
+	else
+		printf("+ ");
+	printf("%gi\n%g ", solution[2], solution[1]);
+	if (tmp < 0 && (tmp *= -1))
+		printf("+ ");
+	else
+		printf("- ");
+	printf("%gi\n", tmp);
+}
+
 static	void	print_solution(double *solution, int degree)
 {
 	if (degree == 1)
@@ -40,8 +59,7 @@ static	void	print_solution(double *solution, int degree)
 \n%g\n%g\n", solution[1], solution[2]);
 		}
 		else
-			printf("\nThe roots are complex numbers: %g + %gi && \%g - %gi\n"\
-					, solution[1], solution[2], solution[1], solution[2]);
+			print_complex(solution);
 	}
 }
 
@@ -53,14 +71,14 @@ static	void	print_result(double *coefficients, double *solution, int degree)
 	printf("Reduced form: ");
 	if (coefficients[0] < 0 && (coefficients[0] *= -1))
 		printf("- ");
-	printf("%g * X^%d ",coefficients[0], 0);
+	printf("%g * X^%d ", coefficients[0], 0);
 	while (i <= degree)
 	{
 		if (coefficients[i] < 0 && (coefficients[i] *= -1))
 			printf("- ");
 		else
 			printf("+ ");
-		printf("%g * X^%d ",coefficients[i], i);
+		printf("%g * X^%d ", coefficients[i], i);
 		i++;
 	}
 	printf("\nPolynomial degree:  %d", degree);

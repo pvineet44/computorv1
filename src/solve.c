@@ -6,7 +6,7 @@
 /*   By: mashar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 19:26:17 by mashar            #+#    #+#             */
-/*   Updated: 2020/09/25 01:21:17 by vparekh          ###   ########.fr       */
+/*   Updated: 2020/09/25 02:02:15 by vparekh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ double		*solve(double *numbers, int degree)
 		{
 			ft_free(numbers);
 			exit(0);
-		}		
+		}
 		solve_two_degree(numbers, &solution);
 		return (solution);
 	}
