@@ -105,10 +105,16 @@ int				main(int argc, const char *argv[])
 	if (argc != 2)
 	{
 		ft_putendl_fd("Wrong number of arguments!", 2);
+		if (coefficients)
+			free(coefficients);
 		return (1);
 	}
 	parse(argv[1], coefficients, &degree);
 	solution = solve(coefficients, degree);
 	print_result(coefficients, solution, degree);
+	if (solution)
+		free(solution);
+	if (coefficients)
+			free(coefficients);
 	return (0);
 }
