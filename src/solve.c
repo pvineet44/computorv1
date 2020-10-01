@@ -6,7 +6,7 @@
 /*   By: mashar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 19:26:17 by mashar            #+#    #+#             */
-/*   Updated: 2020/09/25 02:02:15 by vparekh          ###   ########.fr       */
+/*   Updated: 2020/10/01 19:27:25 by vparekh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,35 @@ void		ft_free(double *numbers)
 	free(numbers);
 }
 
+void		check_exception(double *numbers, int degree)
+{
+	int non_zero;
+	int	i;
+
+	i = 0;
+	non_zero = 0;
+	while (i <= degree)
+		if (numbers[i++] != 0)
+			non_zero++;
+	if (non_zero == 0)
+	{
+		printf("Each real number is a solution!\n");
+		free(numbers);
+		exit(1);
+	}
+	else if(degree == 0)
+	{
+		printf("Impossible equation. There is no solution!\n");
+		free(numbers);
+		exit(1);
+	}
+}
+
 double		*solve(double *numbers, int degree)
 {
 	double	*solution;
 
+	check_exception(numbers, degree);
 	if (degree == 1)
 	{
 		solution = (double*)malloc(sizeof(double) * 2);
