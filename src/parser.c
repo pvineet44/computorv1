@@ -6,7 +6,7 @@
 /*   By: vparekh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 19:06:55 by vparekh           #+#    #+#             */
-/*   Updated: 2020/10/01 19:41:08 by vparekh          ###   ########.fr       */
+/*   Updated: 2020/10/01 20:08:42 by vparekh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void						parse(const char *expression, double tmp[],\
 			i++;
 		if (expression[i] == '-' || expression[i] == '=')
 			flag = -1;
-		if (c > 0 && p > *degree)
+		if (c != 0 && p > *degree)
 			*degree = p;
 	}
 }
