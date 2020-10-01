@@ -17,10 +17,8 @@
 # include "libft.h"
 # include <stdio.h>
 
-
 void						parse(const char *expression, double *tmp,\
 		int *degree);
 double						*solve(double *numbers, int degree);
-
 
 #endif

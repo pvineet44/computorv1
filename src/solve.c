@@ -6,7 +6,7 @@
 /*   By: mashar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 19:26:17 by mashar            #+#    #+#             */
-/*   Updated: 2020/10/01 19:27:25 by vparekh          ###   ########.fr       */
+/*   Updated: 2020/10/01 19:42:42 by mashar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void		ft_free(double *numbers)
 {
 	printf("Malloc error!!!");
 	free(numbers);
+	exit(0);
 }
 
 void		check_exception(double *numbers, int degree)
@@ -76,7 +77,7 @@ void		check_exception(double *numbers, int degree)
 		free(numbers);
 		exit(1);
 	}
-	else if(degree == 0)
+	else if (degree == 0)
 	{
 		printf("Impossible equation. There is no solution!\n");
 		free(numbers);
@@ -93,10 +94,7 @@ double		*solve(double *numbers, int degree)
 	{
 		solution = (double*)malloc(sizeof(double) * 2);
 		if (!solution)
-		{
 			ft_free(numbers);
-			exit(0);
-		}
 		solution[0] = 1;
 		solution[1] = -numbers[0] / numbers[1];
 		return (solution);
@@ -105,10 +103,7 @@ double		*solve(double *numbers, int degree)
 	{
 		solution = (double*)malloc(sizeof(double) * 3);
 		if (!solution)
-		{
 			ft_free(numbers);
-			exit(0);
-		}
 		solve_two_degree(numbers, &solution);
 		return (solution);
 	}

@@ -46,6 +46,10 @@ static	void	print_complex(double *solution)
 
 static	void	print_solution(double *solution, int degree)
 {
+	if (solution[1] == 0)
+		solution[1] = 0.0;
+	if (solution[0] != 1 && solution[2] == 0)
+		solution[2] = 0.0;
 	if (degree == 1)
 		printf("\nThe solution is %g\n", solution[1]);
 	else
@@ -115,6 +119,6 @@ int				main(int argc, const char *argv[])
 	if (solution)
 		free(solution);
 	if (coefficients)
-			free(coefficients);
+		free(coefficients);
 	return (0);
 }
